@@ -1,0 +1,28 @@
+x<-c(132,129,120,113.2,105,92,84,83.2,88.4,59,80,81.5,71,69.2)
+y<-c(46,48,51,52.1,54,52,59,58.7,61.6,64,61.4,54.6,58.8,58)
+##plot(x,y,xlim=c(0,135),ylim=c(0,65))
+plot(x,y)
+
+##Sxx
+sxx=sum((x-mean(x))^2)
+sxx
+##Sxy
+sxy=sum((x-mean(x))*(y-mean(y)))
+sxy
+##B1
+b1=(sxy/sxx)
+b1
+##B0
+b0<-mean(y)-b1*mean(x)
+b0
+##ecuacion de la recta
+##y=75.21243-0.2093874*X
+y=75.21243-0.2093874*()
+
+##COMPARACION CON LM
+abline(lm(y ~ x), col="blue") 
+v<-predict(lm(y~x))
+for(i in 1:13)
+{
+  lines( c(x[i],x[i]), c(y[i], v[i]), col="red")
+}
