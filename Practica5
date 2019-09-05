@@ -1,5 +1,5 @@
-x<-c(42.2,42.6,43.3,43.5,43.7,44.1,44.9,45.3,45.7,45.7,45.9,46,46.2,46.2,46.8,46.8,47.1,47.2)
-y<-c(44,44,44,45,45,46,46,46,47,48,48,48,47,48,48,49,49,49)
+x<-c(50,50,80,80,110,110,140,140,170,170)
+y<-c(17052,14063,26264,19600,21952,26362,26362,26752,31654,32928)
 install.packages("ggplot2")
 require(ggplot2)
 
@@ -20,7 +20,7 @@ b0
 ##SSE
 SSE<-sum((y-rr)^2)
 VARIANZA<-(SSE/8)
-DESVIACION<-VARIANZA^(1/2)
+DESVIACION<-VARIANZA^(1/2) 
 
 ##SST
 media<-mean(rr)
@@ -48,7 +48,4 @@ mod
 qplot(x,y,geom = c("point"), method="lm") +geom_line(aes(y=rr),lwd=1,color=4)
 summary(mod)
 
-##################REDONDEAR################
-b0<-round(mod$coefficients[1],2)
-b1<-round(mod$coefficients[2],2)
-mod$coefficients
+##################################
