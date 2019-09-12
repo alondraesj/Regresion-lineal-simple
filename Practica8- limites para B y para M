@@ -41,3 +41,14 @@ ra<-B0+B1*mediana
 sy<-(DES*((1/50)+(mediana-mt)^2/(sxx))^(1/2))
 lii<-ra+T*sy
 lss<-ra-T*sy
+
+
+#########INTERVALO CON FUNCIONES#########
+#########################################
+mod<-lm(y~x)
+x1<-data.frame(x=mediana)
+median(x)
+confint(mod, 'x',level = 0.95)
+predict(mod, x1, interval = "confidence")
+summary(mod)
+#########################################
