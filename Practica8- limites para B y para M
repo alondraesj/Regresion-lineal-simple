@@ -1,0 +1,43 @@
+x<-c(50,70,65,40,72,60,55,50,36,90,40,60,50,75,45,50,70,85,110,60,63,75,45,85,60,50,35,30,120,85,95,95,90,100,95,100,91,120,85,80,75,100,97,120,100,87,90,105,115,97)
+y<-c(750,770,720,650,848.59,700,620,800,650,800,600,1000,700,820,1100,700,850,850,800,800,700,780,700,800,800,650,600,650,2000,850,889.91,1200,900,900,900,1400,950,950,950,1000,960,1300,1012.59,1050.59,2350,1300,1100,1150,1100,1200)
+mod<-lm(y~x)
+rr<-predict(mod)
+summary(mod)
+install.packages("ggplot2")
+require(ggplot2)
+qplot(x,y, main="Grafica regresion", ylab="Presio", xlab="Tamaño", 
+     geom = c("point"), method="lm") +geom_line(aes(y=rr),lwd=1,color=4)
+
+#######################
+B0=326.252
+B1=7.938
+R=0.3685
+E=259.8
+#######################
+mt<-mean(x)
+mp<-mean(y)
+mediana<-median(x)
+#######################
+sxx <- sum((x-mean(x))^2)
+sxy <-  sum((x-mean(x))*(y-mean(y)))
+##SSE
+SSE<-sum((y-rr)^2)
+V<-(SSE/48)
+DES<-V^(1/2)
+##SST
+media<-mean(rr)
+SST<-sum((y-media)^2)
+
+sy<-DES/(sxx)^(1/2)
+#################################
+T<-qt(.025,48,lower.tail =T)
+T
+
+##INTERVALO DE CONFIANZA DE b1
+li<-B1+T*sy
+ls<-B1-T*sy
+##INTERVALO DE CONFIANZA DE M
+ra<-B0+B1*mediana
+sy<-(DES*((1/50)+(mediana-mt)^2/(sxx))^(1/2))
+lii<-ra+T*sy
+lss<-ra-T*sy
